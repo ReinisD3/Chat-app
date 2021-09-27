@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+
+<div class="panel-body">
+    <ul class="chat">
+        <?php foreach($messages as $message) : ?>
+        <li class="left clearfix"><span class="chat-img pull-left">
+                            <h3>&#9993;</h3>
+                        </span>
+            <div class="chat-body clearfix">
+                <div class="header">
+                    <strong class="primary-font"><?= $message->getNickname() ?></strong> <small
+                        class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span><?= $message->getDateTime() ?></small>
+                </div>
+                <p>
+                    <?= $message->getMessage() ?>
+                </p>
+            </div>
+        </li>
+        <?php endforeach ?>
+
+    </ul>
+</div>
+<div class="panel-footer">
+    <div class="input-group">
+        <form method="post">
+            <input id="nickname" type="text" class="form-control input-sm" name="nickname"
+                   placeholder="type your nickname">
+            <input id="message" type="text" class="form-control input-sm" name="message"
+                   placeholder="Type your message here..."/>
+
+            <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" name="submit" id="btn-chat">
+                                Send</button>
+                        </span>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
